@@ -4,25 +4,24 @@ import java.util.Scanner;
 
 public class labReport2Question3 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner userInput = new Scanner(System.in);
 
         System.out.print("Enter the string value: ");
-        String s = scanner.next();
+        String s = userInput.next();
         System.out.print("Enter the k value: ");
-        int k = scanner.nextInt();
+        int k = userInput.nextInt();
         System.out.println(question3(s, k));
 
     }
 
     public static int question3(String s, int k) {
 
-        char someChar = '?';
+        char someChar = '?'; int sum = 0; int counter = 0;
+
         // create an array to indicate the number of ?
         int[] position = new int[]{-1, -1, -1};
-        int find = 0;
-        int counter = 0;
 
-        // find number of ? and store the index to position array
+        // sum number of ? and store the index to position array
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == someChar) {
                 position[counter] = i;
@@ -57,22 +56,22 @@ public class labReport2Question3 {
 
                     // able divide by k , add counter
                     if (Integer.parseInt(sb.toString()) % k == 0) {
-                        find++;
+                        sum++;
                     }
                 }
 
                 // if there is no next 3rd ? and able divide by k, we add the counter
                 if (Integer.parseInt(sb.toString()) % k == 0 && position[2] == -1) {
-                    find++;
+                    sum++;
                 }
             }
             // if there is no 2nd ? and able divide by k, we add the counter
             if (Integer.parseInt(sb.toString()) % k == 0 && position[1] == -1) {
-                find++;
+                sum++;
             }
         }
 
-        return find;
+        return sum;
     }
 
 }
